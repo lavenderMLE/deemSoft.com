@@ -47,4 +47,9 @@ public class EmployeeResource {
         employeeService.deleteEmployee(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<Employee> deleteAllEmployees() {
+
+    }
 }
