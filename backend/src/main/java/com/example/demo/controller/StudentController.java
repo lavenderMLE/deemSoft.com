@@ -24,30 +24,36 @@ public class StudentController {
     @RequestMapping(value="/students", method=RequestMethod.GET)
     @ResponseBody
     public List<Student> getAllStudents() {
+
         return studentRepository.findAll();
     }
 
     @RequestMapping(value="/student", method=RequestMethod.POST)
     @ResponseBody
     public Student addStudent(Student student) {
+
+        String password = student.getPassword();
         return studentRepository.save(student);
     }
 
     @RequestMapping(value="/findstudent", method = RequestMethod.GET)
     @ResponseBody
-    public Student findStudent(@RequestParam("studentId") int studentId) {
+    public Student findStudent(@RequestParam("studentId") int studentId)
+    {
         return studentRepository.findById(studentId);
     }
 
     @RequestMapping(value= "/updatestudent", method = RequestMethod.GET)
     @ResponseBody
-    public Student updateStudent(@RequestBody Student student){
+    public Student updateStudent(@RequestBody Student student)
+    {
         return studentRepository.save(student);
     }
 
     @RequestMapping(value="/deletestudent", method = RequestMethod.GET)
     @ResponseBody
-    public int deleteStudent(@RequestParam("studentId") int studentId) {
+    public int deleteStudent(@RequestParam("studentId") int studentId)
+    {
         return studentRepository.deleteById(studentId);
     }
 }

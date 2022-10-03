@@ -21,12 +21,14 @@ public class StudentService {
         return students;
     }
 
-    public Student getStudentById(int id) {
+    public Student getStudentById(int id)
+    {
         return studentRepository.findById(id);
     }
 
     //save student in database
-    public void saveStudent(Student student) {
+    public void saveStudent(Student student)
+    {
         try {
             studentRepository.save(student);
         } catch (Exception e) {
@@ -35,7 +37,8 @@ public class StudentService {
     }
 
     //delete stuednt by id
-    public void deleteStudent(int id) {
+    public void deleteStudent(int id)
+    {
         try {
             studentRepository.deleteById(id);
         } catch (Exception e) {
