@@ -32,7 +32,6 @@ public class StudentController {
     @ResponseBody
     public Student addStudent(Student student) {
 
-        String password = student.getPassword();
         return studentRepository.save(student);
     }
 
