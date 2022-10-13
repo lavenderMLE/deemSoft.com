@@ -4,21 +4,33 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { StudentService } from './student.service';
-import { LoginComponent } from './login/login.component';
+
+import { StudentService } from './redux/services/student.service';
+import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { MainComponent } from './components/main/main.component';
+import { FooterComponent } from './components/layouts/footer/footer.component';
+import { HeaderComponent } from './components/layouts/header/header.component';
+import { RegisterComponent } from './components/register/register.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    MainComponent,
+    FooterComponent,
+    HeaderComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
     RouterModule.forRoot([]),
   ],
   providers: [StudentService],
