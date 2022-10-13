@@ -1,6 +1,6 @@
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
-import { Student } from "./student";
+import { Student } from "../../types/student";
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
