@@ -12,7 +12,7 @@ const routes: Routes = [
   },
   {
     path : '',
-    component : LoginComponent
+    component : MainComponent
   },
   {
     path: 'register',

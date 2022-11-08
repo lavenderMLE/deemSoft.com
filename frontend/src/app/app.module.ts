@@ -14,6 +14,8 @@ import { MainComponent } from './components/main/main.component';
 import { FooterComponent } from './components/layouts/footer/footer.component';
 import { HeaderComponent } from './components/layouts/header/header.component';
 import { RegisterComponent } from './components/register/register.component';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
 
 
 @NgModule({
@@ -32,6 +34,8 @@ import { RegisterComponent } from './components/register/register.component';
     ReactiveFormsModule,
     FormsModule,
     RouterModule.forRoot([]),
+    EffectsModule.forRoot([]),
+    StoreModule.forRoot({}, {}),
   ],
   providers: [StudentService],
   bootstrap: [AppComponent]
