@@ -17,19 +17,18 @@ export class StudentService {
     }
 
     getStudents() {
-        console.log('abcd');
-        return axios.get('http://localhost:8080/students}');
+        return axios.get('http://localhost:8080/students');
     }
 
     // public getStudents(): Observable<Student[]> {
     //     return this.http.get<any>(`${this.apiServerUrl}/students`);
     // }
 
-    // public addStudent(student:Student): Observable<Student> {
-    //     return this.http.post<any>(`${this.apiServerUrl}/student`, student);
-    // }
+    public addStudent(student:Student): Observable<Student> {
+        return this.http.post<any>(`${this.apiServerUrl}/student`, student);
+    }
  
-    // public deleteStudent(studentId: number): Observable<void> {
-    //     return this.http.delete<any>(`${this.apiServerUrl}/student/${studentId}`);
-    // }
+    public deleteStudent(studentId: number): Observable<void> {
+        return this.http.delete<any>(`${this.apiServerUrl}/student/${studentId}`);
+    }
 }

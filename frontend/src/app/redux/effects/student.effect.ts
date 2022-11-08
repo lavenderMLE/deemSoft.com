@@ -12,7 +12,6 @@ export class StudentEffects {
     ofType(StudentAction.GetStudentList),
     mergeMap(() =>
       this.studentService.getStudents().then((res:any) => {
-          console.log('ddd') ;
           new GetStudentList({
             studentList : res.data
           })

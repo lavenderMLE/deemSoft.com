@@ -3,11 +3,11 @@ import { StudentAction, StudentUnion } from "../actions/student.action";
 import { Student } from "../../types/student";
 
 export interface StudentState {
-    studentsList : Student[];
+    studentList : Student[];
 }
 
 const initialState : StudentState = {
-    studentsList : []
+    studentList : []
 }
 
 export function studentReducer(state: StudentState = initialState, action : StudentUnion)
@@ -16,7 +16,7 @@ export function studentReducer(state: StudentState = initialState, action : Stud
         case StudentAction.GetStudentList:
             return {
                 ...state,
-                studentsList : action.payload.studentList,
+                studentList : action.payload.studentList,
             }
         default:
             return state;

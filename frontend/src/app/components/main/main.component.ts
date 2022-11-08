@@ -14,26 +14,27 @@ import { StudentService } from 'src/app/redux/services/student.service';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  styleUrls: ['./main.component.css'],
+  providers: [StudentService]
 })
 export class MainComponent implements OnInit {
 
   studentsList: Student[] = [];
   loading : boolean = false;
+
   constructor(private store: Store, private studentService: StudentService) {
-      this.store.pipe(select(selectStudentList)).subscribe((studentsList)=> {
-        this.studentsList = studentsList ;
-        if(this.studentsList.length)
-          this.loading = false;
+      this.store.pipe(select(selectStudentList)).subscribe((studentList)=> {
+         this.studentsList = studentList ;
+         if(this.studentsList.length)
+           this.loading = false;
       });
       
       selectStudentList.release();
 
       this.studentService.getStudents().then((res: any) => {
-        console.log(res);
         setTimeout(() => {
           this.store.dispatch(new GetStudentList({
-            studentList: res.data
+            studentList: res
           }))
         }, 3000);
       }).catch((err : any) => {
