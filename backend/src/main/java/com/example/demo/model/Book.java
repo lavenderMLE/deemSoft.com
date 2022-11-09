@@ -1,43 +1,64 @@
 package com.example.demo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String name;
+    private String title;
+    private String description;
+    private String posterImgPath;
     private String author;
-    private Integer cost;
+    @Column(nullable = false)
+    private boolean favorite;
 
-    public String getName()
+    public String getTitle()
     {
-        return this.name;
+        return this.title;
     }
-
-    public void setName(String name){
-        this.name = name;
+    public void setTitle(String title){
+        this.title = title;
     }
-
+    public boolean getFavorite() {
+        return this.favorite;
+    }
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
+    }
     public String getAuthor()
     {
         return this.author;
     }
-
     public void setAuthor(String author) {
         this.author = author;
     }
-
-    public int getCost()
+    public String getDescription()
     {
-        return this.cost;
+        return this.description;
     }
-
-    public void setCost(Integer cost) {
-        this.cost = cost;
+    public  void setDescription(String description)
+    {
+        this.description = description;
+    }
+    public String getPosterImgPath()
+    {
+        return this.posterImgPath;
+    }
+    public void SetPosterImgPath(String posterImgPath)
+    {
+        this.posterImgPath = posterImgPath;
+    }
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", author='" +  author + '\'' +
+                ", posterImgPath='" + posterImgPath + '\'' +
+                ", favorite=" + favorite + '\'' +
+                '}';
     }
 }
