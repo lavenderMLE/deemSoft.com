@@ -12,7 +12,6 @@ import java.util.List;
 public class StudentController {
     @Autowired
     StudentRepository studentRepository;
-
     //check the api's working correctly api
     @RequestMapping(value="/ping", method= RequestMethod.GET)
     @ResponseBody

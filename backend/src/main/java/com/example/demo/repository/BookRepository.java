@@ -1,23 +1,14 @@
 package com.example.demo.repository;
 
 import com.example.demo.model.Book;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.demo.model.Student;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
-public interface BookRepository {
+public interface BookRepository extends JpaRepository<Book, Integer> {
 
-    @Autowired
-    BookRepository bookRepository = null;
-
-    //get all the books
-    public List<Book> getAllBooks() {
-        List<Book> books = bookRepository.findAll();
-        return books;
-    }
-
-    public Book getBookById(int id) {
-        return bookRepository.getBookById(id);
-    }
+    List<Book> findAll();
+    Book findById(int id);
+    int deleteById(int id);
 }

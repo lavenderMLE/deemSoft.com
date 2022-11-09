@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.Student;
-import com.example.demo.repository.StudentRepository;
+import com.example.demo.model.Book;
+import com.example.demo.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,7 +9,7 @@ import java.util.List;
 
 public class BookController {
     @Autowired
-    StudentRepository studentRepository;
+    BookRepository bookRepository;
 
     //check the api's working correctly api
     @RequestMapping(value="/ping", method= RequestMethod.GET)
@@ -19,38 +19,38 @@ public class BookController {
     }
 
 
-    @RequestMapping(value="/students", method=RequestMethod.GET)
+    @RequestMapping(value="/books", method=RequestMethod.GET)
     @ResponseBody
-    public List<Student> getAllStudents() {
+    public List<Book> getAllBooks() {
 
-        return studentRepository.findAll();
+        return bookRepository.findAll();
     }
 
-    @RequestMapping(value="/student", method=RequestMethod.POST)
+    @RequestMapping(value="/books", method=RequestMethod.POST)
     @ResponseBody
-    public Student addStudent(Student student) {
+    public Book addBook(Book book) {
 
-        return studentRepository.save(student);
+        return bookRepository.save(book);
     }
 
-    @RequestMapping(value="/findstudent", method = RequestMethod.GET)
+    @RequestMapping(value="/findbook", method = RequestMethod.GET)
     @ResponseBody
-    public Student findStudent(@RequestParam("studentId") int studentId)
+    public Book findBook(@RequestParam("bookId") int bookId)
     {
-        return studentRepository.findById(studentId);
+        return bookRepository.findById(bookId);
     }
 
-    @RequestMapping(value= "/updatestudent", method = RequestMethod.GET)
+    @RequestMapping(value= "/updatebook", method = RequestMethod.GET)
     @ResponseBody
-    public Student updateStudent(@RequestBody Student student)
+    public Book updateBook(@RequestBody Book book)
     {
-        return studentRepository.save(student);
+        return bookRepository.save(book);
     }
 
-    @RequestMapping(value="/deletestudent", method = RequestMethod.GET)
+    @RequestMapping(value="/deletebook", method = RequestMethod.GET)
     @ResponseBody
-    public int deleteStudent(@RequestParam("studentId") int studentId)
+    public int deleteBook(@RequestParam("studentId") int bookId)
     {
-        return studentRepository.deleteById(studentId);
+        return bookRepository.deleteById(bookId);
     }
 }
