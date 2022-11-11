@@ -1,43 +1,37 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
 
-import { AppRoutingModule } from './app-routing.module';
+import { SharedModule } from './shared/shared.module';
+import { BookModule } from './books/books.module';
 import { AppComponent } from './app.component';
-
-import { StudentService } from './redux/services/student.service';
-import { LoginComponent } from './components/login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { MainComponent } from './components/main/main.component';
-import { FooterComponent } from './components/layouts/footer/footer.component';
-import { HeaderComponent } from './components/layouts/header/header.component';
-import { RegisterComponent } from './components/register/register.component';
-import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
 
+const APP_ROUTES: Routes = [
+  { path: '', redirectTo: 'book', pathMatch: 'full' }
+];
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent,
-    MainComponent,
-    FooterComponent,
-    HeaderComponent,
-    RegisterComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    BrowserAnimationsModule,
     HttpClientModule,
-    ReactiveFormsModule,
-    FormsModule,
-    RouterModule.forRoot([]),
+    BookModule,
+    SharedModule,
+    RouterModule.forRoot(APP_ROUTES, { useHash: true, relativeLinkResolution: 'legacy' }),
     EffectsModule.forRoot([]),
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
-  providers: [StudentService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
