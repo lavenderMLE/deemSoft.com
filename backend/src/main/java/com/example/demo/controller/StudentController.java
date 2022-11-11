@@ -41,14 +41,14 @@ public class StudentController {
         return studentRepository.findById(studentId);
     }
 
-    @RequestMapping(value= "/updatestudent", method = RequestMethod.GET)
+    @RequestMapping(value= "/updatestudent", method = RequestMethod.PUT)
     @ResponseBody
     public Student updateStudent(@RequestBody Student student)
     {
         return studentRepository.save(student);
     }
 
-    @RequestMapping(value="/deletestudent", method = RequestMethod.GET)
+    @RequestMapping(value="/deletestudent", method = RequestMethod.DELETE)
     @ResponseBody
     public int deleteStudent(@RequestParam("studentId") int studentId)
     {
